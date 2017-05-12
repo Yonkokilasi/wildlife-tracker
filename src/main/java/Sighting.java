@@ -13,8 +13,8 @@ public class Sighting {
     private String location;
 
     public Sighting( String rangername, String location){
-        this.name = rangername;
+        this.rangername = rangername;
         this.location = location;
     }
-    
+
 }
