@@ -22,5 +22,17 @@ public class Sighting {
     public String getLocation() {
         return location;
     }
-
+    public int getId(){
+        return id;
+    }
+    @Override
+    public boolean equals(Object otherSighting){
+        if(!(otherSighting instanceof Sighting)) {
+            return false;
+        } else {
+            Sighting newSighting = (Sighting) otherSighting;
+            return this.getName().equals(newSighting.getName()) &&
+            this.getLocation().equals(newSighting.getLocation());
+        }
+    }
 }
