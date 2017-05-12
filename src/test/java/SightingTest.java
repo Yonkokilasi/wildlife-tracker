@@ -9,7 +9,17 @@ public class SightingTest{
 
     @Test
     public void sighting_instatiatiesCorrectly_true(){
-        Sighting testSighting = new Sighting("Job","Ngara");
+        Sighting testSighting = new Sighting("Job","place");
         assertEquals(true, testSighting instanceof Sighting);
+    }
+    @Test
+    public void sighting_instantiatesWithRangername_Bob() {
+        Sighting testSighting = new Sighting("Bob","place");
+        assertEquals("Bob",testSighting.getName());
+    }
+    @Test
+    public void sighting_instantiatesWithLocation_place() {
+        Sighting testSighting = new Sighting("Bob","place");
+        assertEquals("place",testSighting.getLocation());
     }
 }

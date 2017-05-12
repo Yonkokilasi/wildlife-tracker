@@ -16,5 +16,11 @@ public class Sighting {
         this.rangername = rangername;
         this.location = location;
     }
+    public String getName() {
+        return rangername;
+    }
+    public String getLocation() {
+        return location;
+    }
 
 }
