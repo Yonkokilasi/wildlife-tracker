@@ -28,4 +28,10 @@ public class SightingTest{
         Sighting anotherSighting = new Sighting("Bob","Ngara");
         assertTrue(firstSighting.equals(anotherSighting));
     }
+    @Test
+    public void save_insertsObjectIntoDatabase_Sighting() {
+        Sighting testSighting = new Sighting("Bob","Ngara");
+        testSighting.save();
+        assertTrue(Sighting.all().get(0).equals(testSighting));
+    }
 }

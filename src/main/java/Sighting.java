@@ -35,4 +35,21 @@ public class Sighting {
             this.getLocation().equals(newSighting.getLocation());
         }
     }
+    public void save() {
+        try(Connection con= DB.sql2o.open()) {
+            String sql = "INSERT INTO sightings(rangername,location) VALUES (:rangername, :location)";
+            this.id = (int)
+            con.createQuery(sql, true)
+            .addParameter("rangername",this.rangername)
+            .addParameter("location",this.location)
+            .executeUpdate()
+            .getKey();
+        }
+    }
+    public static List<Sighting> all() {
+        String sql = "SELECT * FROM sightings";
+        try(Connection con = DB.sql2o.open()) {
+            return con.createQuery(sql).executeAndFetch(Sighting.class);
+        }
+    }
 }
