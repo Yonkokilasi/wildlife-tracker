@@ -25,7 +25,7 @@ public class SightingTest{
     @Test
     public void equals_returnsTrueIfNameAndLocationAreSame_true(){
         Sighting firstSighting = new Sighting("Bob","Ngara");
-        Sighting anotherSighting = new Sighting("Bob","Nagara");
+        Sighting anotherSighting = new Sighting("Bob","Ngara");
         assertTrue(firstSighting.equals(anotherSighting));
     }
 }
