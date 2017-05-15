@@ -11,10 +11,12 @@ public class Sighting {
     private String rangername;
     private int id;
     private String location;
+    private int animalId;
 
     public Sighting( String rangername, String location){
         this.rangername = rangername;
         this.location = location;
+        this.animalId = animalId;
     }
     public String getName() {
         return rangername;
@@ -24,6 +26,9 @@ public class Sighting {
     }
     public int getId(){
         return id;
+    }
+    public int getAnimalId() {
+        return animalId;
     }
     @Override
     public boolean equals(Object otherSighting){
@@ -42,6 +47,7 @@ public class Sighting {
             con.createQuery(sql, true)
             .addParameter("rangername",this.rangername)
             .addParameter("location",this.location)
+            .addParameter("animalId", this.animalId)
             .executeUpdate()
             .getKey();
         }

@@ -10,7 +10,7 @@ import java.util.TimerTask;
 public class EndangeredAnimal extends Animal {
     private String health;
     private int age;
-
+    
 
     public EndangeredAnimal(String name, String species) {
         this.name = name;
