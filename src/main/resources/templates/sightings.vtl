@@ -2,11 +2,17 @@
 <h2>Add a sighting</h2>
 <form class="form_control" action="/sightings"
  method="post">
- <label for="name">Ranger Name</label>
- <input type="text" name="name" id="name">
- <label for="locate">Location of sighting</label>
- <input type="text" name="locate" id="locate" placeholder="Narok">
- 
+ <label for="rangername">Ranger Name</label>
+ <input type="text" name="rangername" id="name">
+ <label for="location">Location of sighting</label>
+ <input type="text" name="location" id="location" placeholder="Narok">
+ <select id="animalId" name="animalId" type="text">
+     #foreach($animal in $animals)
+         <option value="animal.getId">$animal.getName()</option>
+     #end
+
+ </select>
+
  <button type="submit" name="button">Submit</button>
 </form>
 

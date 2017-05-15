@@ -26,18 +26,22 @@ public class App {
        }, new VelocityTemplateEngine());
 
        // get method for form to add a sighting
-       get("/sightings",            (request,response)-> {
+       get("/sightings",         (request,response)-> {
            Map<String,Object> model = new HashMap<String,Object>();
            model.put("sightings",Sighting.all());
             model.put("template","templates/sightings.vtl");
            return new ModelAndView(model, layout);
         }, new VelocityTemplateEngine());
+
         post("/sightings",(request, response)-> {
             Map<String,Object> model = new HashMap<String,Object>();
-            Sighting name = request.queryParams("rangername");
-            Sighting locate = request.queryParams("location");
-            Sighting newSighting = new Sighting(rangername,location);
+            EndangeredAnimal endangeredAnimal = EndangeredAnimal.find(Integer.parseInt(request.queryParams(animalId)));
+            Sighting rangername = request.queryParams("rangername");
+            Sighting location = request.queryParams("location");
+
+            Sighting newSighting = new Sighting(rangername,location,animal.getId());
             newSighting.save();
+            model.put("animal",animal);
             model.put("template","templates/sighting-success.vtl");
              return new ModelAndView(model, layout);
          }, new VelocityTemplateEngine());

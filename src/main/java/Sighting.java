@@ -58,4 +58,18 @@ public class Sighting {
             return con.createQuery(sql).executeAndFetch(Sighting.class);
         }
     }
+    public static Sighting find(int id) {
+        try(Connection con =DB.sql2o.open()) {
+            String sql = "SELECT * FROM sightings WHERE id=:id";
+            Sighting sighting = con.createQuery(sql).addParameter("id",id).executeAndFetchFirst(Sighting.class);
+            return sighting;
+        }
+    }
+    public void delete() {
+        try(Connection con = DB.sql2o.open()){
+            String sql = "DELETE FROM sightings WHERE id=:id;";
+            con.createQuery(sql).addParameter("id",id).executeUpdate();
+        }
+    }
+
 }
