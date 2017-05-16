@@ -13,7 +13,7 @@ public class Sighting {
     private String location;
     private int animalId;
 
-    public Sighting( String rangername, String location){
+    public Sighting( String rangername, String location, int animalId){
         this.rangername = rangername;
         this.location = location;
         this.animalId = animalId;

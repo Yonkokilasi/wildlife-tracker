@@ -35,13 +35,13 @@ public class App {
 
         post("/sightings",(request, response)-> {
             Map<String,Object> model = new HashMap<String,Object>();
-            EndangeredAnimal endangeredAnimal = EndangeredAnimal.find(Integer.parseInt(request.queryParams(animalId)));
-            Sighting rangername = request.queryParams("rangername");
-            Sighting location = request.queryParams("location");
 
-            Sighting newSighting = new Sighting(rangername,location,animal.getId());
+            int animalId = Integer.parseInt(request.queryParams("animalId"));
+            String rangername = request.queryParams("rangername");
+            String location = request.queryParams("location");
+
+            Sighting newSighting = new Sighting(rangername,location,animalId);
             newSighting.save();
-            model.put("animal",animal);
             model.put("template","templates/sighting-success.vtl");
              return new ModelAndView(model, layout);
          }, new VelocityTemplateEngine());

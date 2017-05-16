@@ -10,18 +10,14 @@ import java.util.TimerTask;
 public class EndangeredAnimal extends Animal {
     private String health;
     private int age;
-    
 
-    public EndangeredAnimal(String name, String species) {
-        this.name = name;
-        this.species = species;
+
+    public EndangeredAnimal(String name, String species, String health, int age) {
+        super(name, species);
+        this.health = health;
+        this.age = age;
     }
-    public static List<EndangeredAnimal> all(){
-        String sql = "SELECT * FROM animals";
-        try(Connection con = DB.sql2o.open()) {
-            return con.createQuery(sql).executeAndFetch(EndangeredAnimal.class);
-        }
-    }
+    
     public static EndangeredAnimal find(int id) {
         try(Connection con = DB.sql2o.open()) {
             String sql = "SELECT * FROM animals where id=:id";
