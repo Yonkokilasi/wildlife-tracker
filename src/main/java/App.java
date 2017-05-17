@@ -35,15 +35,32 @@ public class App {
 
         post("/sightings",(request, response)-> {
             Map<String,Object> model = new HashMap<String,Object>();
-
             int animalId = Integer.parseInt(request.queryParams("animalId"));
             String rangername = request.queryParams("rangername");
             String location = request.queryParams("location");
-
             Sighting newSighting = new Sighting(rangername,location,animalId);
             newSighting.save();
             model.put("template","templates/sighting-success.vtl");
              return new ModelAndView(model, layout);
          }, new VelocityTemplateEngine());
+
+         get("/recentsightings", (request, response) -> {
+          Map<String,Object> model = new HashMap<String,Object>();
+          model.put("sightings",Sighting.all());
+          model.put("template","templates/recentsightings.vtl");
+          return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
+
+        post("/recentsightings",(request,response) -> {
+            Map<String , Object> model = new HashMap<String,Object>();
+            int animalId = Integer.parseInt(request.queryParams("animalId"));
+            String rangername = request.queryParams("rangername");
+            String location = request.queryParams("location");
+            Sighting newSighting = new Sighting(rangername,location,animalId);
+            newSighting.save();
+
+            model.put("template","templates/index.vtl");
+            return new ModelAndView(model, layout);
+          }, new VelocityTemplateEngine());
     }
 }

@@ -1,0 +1,9 @@
+<h1>Recent Sightings</h1>
+
+<ul>
+#foreach ($sighting in $sightings)
+<li>This sighting was by $newSighting.getName() at $newSighting.getLocation() Animal seen was $animal.getId()
+</li>
+#end
+</ul>
+<a href="/">Home</a>
